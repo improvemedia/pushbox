@@ -1,0 +1,12 @@
+.b-page-title Комнаты
+
+table.b-table
+  thead
+    tr
+      th Название
+      th Тип
+
+  - @presenter.chat_entities.each do |chat_entity|
+    tr
+      td= chat_entity.name
+      td= chat_entity.human_type

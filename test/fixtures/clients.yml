@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  _type: MyString
+  active: false
+  chatroom: one
+  moderator_chatroom_id: 1
+
+two:
+  name: MyString
+  _type: MyString
+  active: false
+  chatroom: two
+  moderator_chatroom_id: 1

@@ -1,0 +1,19 @@
+.b-page-title Клиенты
+
+table.b-table
+  thead
+    tr
+      th Имя
+      th Активен
+      th Комната чата
+      th Комната модерации
+
+  - @presenter.client_entities.each do |client_entity|
+    tr
+      td: a(href=client_entity.edit_url)= client_entity.name
+      td= client_entity.human_active
+      td= client_entity.listen_chatroom_name
+      td= client_entity.moderator_chatroom_name
+
+.b-bottom-panel
+  a.b-btn.b-btn__skin_success.b-btn__size_m(href=new_admin_client_path) Добавить клиента

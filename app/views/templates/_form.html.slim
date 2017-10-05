@@ -1,0 +1,25 @@
+- form ||= raise 'undefined form'
+
+= form_for [:admin, form], url: form.url do |f|
+  .b-form
+    .b-form_field
+      label Имя
+      .b-form-control__textline
+        = f.text_field :name
+
+    .b-form_field
+      label Комната клиента
+      .b-form-control__select
+        = f.select :chatroom_id, f.object.chatroom_collection
+
+    .b-form_field
+      label Комната модератора
+      .b-form-control__select
+        = f.select :moderator_chatroom_id, f.object.moderator_chatroom_collection
+
+    .b-form_field
+      label.b-form-control__checkbox
+        = f.check_box :active
+        | Активен
+
+    button.b-btn.b-btn__skin_success.b-btn__size_m(type='submit') Сохранить

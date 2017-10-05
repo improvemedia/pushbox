@@ -1,0 +1,43 @@
+             Prefix Verb   URI Pattern                         Controller#Action
+            animals GET    /animals(.:format)                  animals#index
+                    POST   /animals(.:format)                  animals#create
+         new_animal GET    /animals/new(.:format)              animals#new
+        edit_animal GET    /animals/:id/edit(.:format)         animals#edit
+             animal GET    /animals/:id(.:format)              animals#show
+                    PATCH  /animals/:id(.:format)              animals#update
+                    PUT    /animals/:id(.:format)              animals#update
+                    DELETE /animals/:id(.:format)              animals#destroy
+             career GET    /career(.:format)                   careers#show
+        new_profile GET    /profile/new(.:format)              profiles#new
+       edit_profile GET    /profile/edit(.:format)             profiles#edit
+            profile GET    /profile(.:format)                  profiles#show
+                    PATCH  /profile(.:format)                  profiles#update
+                    PUT    /profile(.:format)                  profiles#update
+                    DELETE /profile(.:format)                  profiles#destroy
+                    POST   /profile(.:format)                  profiles#create
+               task GET    /task(.:format)                     tasks#show
+               root GET    /                                   careers#show
+    admin_chatrooms GET    /admin/chatrooms(.:format)          admin/chatrooms#index
+                    POST   /admin/chatrooms(.:format)          admin/chatrooms#create
+ new_admin_chatroom GET    /admin/chatrooms/new(.:format)      admin/chatrooms#new
+edit_admin_chatroom GET    /admin/chatrooms/:id/edit(.:format) admin/chatrooms#edit
+     admin_chatroom GET    /admin/chatrooms/:id(.:format)      admin/chatrooms#show
+                    PATCH  /admin/chatrooms/:id(.:format)      admin/chatrooms#update
+                    PUT    /admin/chatrooms/:id(.:format)      admin/chatrooms#update
+                    DELETE /admin/chatrooms/:id(.:format)      admin/chatrooms#destroy
+      admin_clients GET    /admin/clients(.:format)            admin/clients#index
+                    POST   /admin/clients(.:format)            admin/clients#create
+   new_admin_client GET    /admin/clients/new(.:format)        admin/clients#new
+  edit_admin_client GET    /admin/clients/:id/edit(.:format)   admin/clients#edit
+       admin_client GET    /admin/clients/:id(.:format)        admin/clients#show
+                    PATCH  /admin/clients/:id(.:format)        admin/clients#update
+                    PUT    /admin/clients/:id(.:format)        admin/clients#update
+                    DELETE /admin/clients/:id(.:format)        admin/clients#destroy
+       new_api_test GET    /api/test/new(.:format)             api/tests#new
+      edit_api_test GET    /api/test/edit(.:format)            api/tests#edit
+           api_test GET    /api/test(.:format)                 api/tests#show
+                    PATCH  /api/test(.:format)                 api/tests#update
+                    PUT    /api/test(.:format)                 api/tests#update
+                    DELETE /api/test(.:format)                 api/tests#destroy
+                    POST   /api/test(.:format)                 api/tests#create
+                    GET    /                                   landings#show

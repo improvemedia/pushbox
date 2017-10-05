@@ -1,0 +1,121 @@
+.p-admin-post-edit
+  .b-page-title
+    margin: 0 0 10px;
+
+  .l-content
+    &__textarea
+      height: calc("100vh - 210px");
+
+  .l-section
+    + .l-section
+      margin: 20px 0 0;
+
+    &__title
+      font-weight: 600;
+      margin: 0 0 20px;
+      text-transform: uppercase;
+
+  .l-tag
+    + .l-tag
+      margin: 10px 0 0;
+
+    input
+      margin: 0 8px 0 0;
+
+  .l-photo-uploader
+    &__list
+      margin: -10px;
+
+    &__photo,
+    &__upload
+      margin: 10px;
+      display: inline-block;
+      position: relative;
+      width: 180px;
+      height: 180px;
+
+    &__photo
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center center;
+      font-size: 12px;
+
+      &:hover
+        .__delete,
+        .__id
+          display: block;
+
+      .__id
+        display: none;
+        text-align: center;
+        background: rgba(#fff, 0.5);
+        absolute: auto 0 0;
+        height: 25px;
+        line-height: 25px;
+        font-weight: 600;
+
+      .__delete
+        display: none;
+        absolute: 0 0 auto 0;
+        height: 25px;
+        line-height: 25px;
+        text-align: center;
+        background: $red-color;
+        color: #fff;
+        cursor: pointer;
+
+        &::before
+          content: 'удалить';
+
+    &__upload
+      hide-file-input();
+      position: relative;
+      border: 1px dashed $dark-gray-color;
+
+      &::after
+        content: 'Нажмите, чтобы загрузить фото.';
+        text-align: center;
+        width: 150px;
+        height: 45px;
+        line-height: 22px;
+        absolute: 0 0 0 0;
+        margin: auto;
+        z-index: 10;
+        opacity: 0.5;
+        font-weight: 600;
+        pointer-events: none;
+
+
+  .l-cover-uploader
+    hide-file-input();
+    position: relative;
+    max-width: 960px;
+    margin: 0 auto;
+    height: 500px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    border: 1px dashed $dark-gray-color;
+
+    &.is-uploaded
+      border: none;
+
+    &:hover
+      &::before
+        content: '';
+        absolute: 0 0 0 0;
+        background: rgba(#000, 0.6);
+
+      &::after
+        content: 'Нажмите, чтобы загрузить новую обложку.';
+        text-align: center;
+        width: 240px;
+        height: 20px;
+        line-height: 22px;
+        absolute: 0 0 0 0;
+        margin: auto;
+        z-index: 10;
+        // opacity: 0.5;
+        color: #fff;
+        font-weight: 600;
+        pointer-events: none;

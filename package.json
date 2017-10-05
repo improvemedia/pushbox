@@ -1,0 +1,41 @@
+{
+  "name": "majordom",
+  "version": "1.0.0",
+  "description": "",
+  "main": "gulpfile.js",
+  "dependencies": {
+    "babel-core": "6.26.0",
+    "babel-loader": "7.1.2",
+    "babel-plugin-syntax-async-functions": "^6.13.0",
+    "babel-plugin-syntax-dynamic-import": "^6.18.0",
+    "babel-plugin-transform-object-assign": "^6.22.0",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-plugin-transform-react-jsx": "^6.24.1",
+    "babel-plugin-transform-regenerator": "^6.26.0",
+    "babel-preset-es2015": "6.24.1",
+    "corejs": "1.0.0",
+    "css-loader": "0.26.4",
+    "del": "^3.0.0",
+    "extract-text-webpack-plugin": "^3.0.0",
+    "gulp": "^3.9.1",
+    "gulp-livereload": "^3.8.1",
+    "gulp-rev-all": "^0.9.7",
+    "gulp-task-loader": "^1.4.4",
+    "gulp-util": "^3.0.8",
+    "imports-loader": "0.7.1",
+    "kouto-swiss": "1.0.0",
+    "livereload-js": "^2.2.2",
+    "raw-loader": "^0.5.1",
+    "run-sequence": "^2.1.0",
+    "style-loader": "0.13.2",
+    "stylus": "0.54.5",
+    "stylus-loader": "3.0.1",
+    "webpack": "3.6.0",
+    "webpack-merge": "4.1.0",
+    "zepto": "1.2.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@bitbucket.org/vursen/majordom.git"
+  }
+}

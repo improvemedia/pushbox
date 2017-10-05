@@ -1,0 +1,32 @@
+.b-tabs
+  &_nav
+    margin: 0 0 30px;
+    border-bottom: 2px solid $dark-gray-color;
+
+    a
+      display: inline-block;
+      padding: 15px 10px;
+      text-transform: uppercase;
+      font-weight: 500;
+      color: $black-color;
+      position: relative;
+      opacity: 0.5;
+
+      + a
+        margin-left: 20px;
+
+      &.is-active
+        opacity: 1;
+
+        &::after
+          content: '';
+          position: absolute;
+          bottom: -2px; left: 0; right: 0;
+          height: 2px;
+          background: $black-color;
+
+  &_item
+    display: none;
+
+    &.is-active
+      display: block;
