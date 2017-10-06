@@ -5,5 +5,7 @@ class Letter < ApplicationRecord
 
   belongs_to :template, optional: true
 
-  scope :some_scope, -> { all }
+  def segment
+    'mock'
+  end
 end

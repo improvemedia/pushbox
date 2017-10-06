@@ -20,6 +20,8 @@ gem 'pry'
 gem 'formtastic'
 gem 'unicorn'
 
+gem 'sidekiq'
+
 gem 'pg'
 gem 'dotenv-rails'
 
