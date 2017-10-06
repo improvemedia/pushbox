@@ -10,8 +10,8 @@ class LetterDispatcherService
   end
 
   def deliver
-    render_email
-    send_email
+    email = render_email
+    send_email(email)
   end
 
   private
@@ -19,6 +19,6 @@ class LetterDispatcherService
   def render_email
   end
 
-  def send_email
+  def send_email(email)
   end
 end

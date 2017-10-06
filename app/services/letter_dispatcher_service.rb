@@ -10,7 +10,7 @@ class LetterDispatcherService
 
   def dispatch_async
     users_for_dispatch.find_each do |user|
-      SendEmailsWorker.perform_async(user_id, letter.pushbox_templates_id)
+      SendEmailWorker.perform_async(user_id, letter.pushbox_templates_id)
     end
   end
 

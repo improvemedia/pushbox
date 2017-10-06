@@ -1,4 +1,4 @@
-class SendEmailsWorker
+class SendEmailWorker
   include Sidekiq::Worker
 
   sidekiq_options retry: false
