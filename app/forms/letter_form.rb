@@ -8,8 +8,20 @@ class LetterForm < BaseForm
   attribute :segment_id,  Integer
   attribute :start_at,    Date
 
-  def url
-    r.letter_path(123)
+  def persist
+    letter.update_attributes(letter_attributes)
+  end
+
+  def errors
+    letter.errors
+  end
+
+  def persisted?
+    !letter.new_record?
+  end
+
+  def id
+    letter.id
   end
 
   def segment_collection
@@ -18,5 +30,11 @@ class LetterForm < BaseForm
 
   def template_collection
     []
+  end
+
+  private
+
+  def letter_attributes
+    attributes.slice(:title, :segment_id, :start_at).merge(pushbox_template_id: template_id).compact
   end
 end

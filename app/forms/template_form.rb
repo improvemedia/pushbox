@@ -6,7 +6,25 @@ class TemplateForm < BaseForm
   attribute :title, String
   attribute :body,  String
 
-  def url
-    r.template_path(123)
+  def persist
+    template.update_attributes(template_attributes)
+  end
+
+  def errors
+    template.errors
+  end
+
+  def persisted?
+    !template.new_record?
+  end
+
+  def id
+    template.id
+  end
+
+  private 
+
+  def template_attributes
+    attributes.slice(:title, :body)
   end
 end
