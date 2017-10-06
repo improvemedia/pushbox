@@ -4,15 +4,15 @@ html
     meta charset='utf-8'
     link href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&amp;subset=cyrillic' rel='stylesheet'
 
-    = stylesheet_link_tag 'admin.bundle.css'
+    = stylesheet_link_tag 'main.bundle.css'
 
     title Admin
 
   body.b-page(class="p-#{action_path}")
     .b-page_side
-      = render 'layouts/admin/page_side'
+      = render 'layouts/page_side', nav_entities: layout_entity.page_side_nav_item_entities
 
     .b-page_content
       = yield
 
-  = javascript_include_tag 'admin.bundle.js'
+  = javascript_include_tag 'main.bundle.js'

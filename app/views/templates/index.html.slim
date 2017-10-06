@@ -1,19 +1,19 @@
-.b-page-title Клиенты
+.b-page-title Шаблоны
 
 table.b-table
   thead
     tr
-      th Имя
-      th Активен
-      th Комната чата
-      th Комната модерации
+      th Название
+      th Действие
 
-  - @presenter.client_entities.each do |client_entity|
-    tr
-      td: a(href=client_entity.edit_url)= client_entity.name
-      td= client_entity.human_active
-      td= client_entity.listen_chatroom_name
-      td= client_entity.moderator_chatroom_name
+  tbody
+    - @presenter.template_entities.each do |template_entity|
+      tr
+        td= template_entity.title
+        td._actions
+          a.b-btn.b-btn__skin_success.b-btn__size_s(href='#') Превью
+          a.b-btn.b-btn__skin_success.b-btn__size_s(href='#') Редактировать
+          a.b-btn.b-btn__skin_danger.b-btn__size_s(href='#') Удалить
 
 .b-bottom-panel
-  a.b-btn.b-btn__skin_success.b-btn__size_m(href=new_admin_client_path) Добавить клиента
+  a.b-btn.b-btn__skin_success.b-btn__size_m(href=new_template_path) Создать шаблон

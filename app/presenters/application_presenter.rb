@@ -1,4 +1,4 @@
-class Admin::ApplicationPresenter < BasePresenter
+class ApplicationPresenter < BasePresenter
   def application_layout_entity
     OpenStruct.new(
       page_side_nav_item_entities: page_side_nav_item_entities
@@ -10,14 +10,14 @@ class Admin::ApplicationPresenter < BasePresenter
   def page_side_nav_item_entities
     [
       {
-        title: 'Комнаты',
-        url: r.admin_chatrooms_path,
-        is_active: active_page_side_nav_item == :chatrooms
+        title: 'Рассылки',
+        url: r.letters_path,
+        is_active: active_page_side_nav_item == :letters
       },
       {
-        title: 'Клиенты',
-        url: r.admin_clients_path,
-        is_active: active_page_side_nav_item == :clients
+        title: 'Шаблоны',
+        url: r.templates_path,
+        is_active: active_page_side_nav_item == :templates
       }
     ].map { |nav_item| OpenStruct.new(nav_item) }
   end

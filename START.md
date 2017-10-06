@@ -1,4 +1,4 @@
 
-createuser —createdb —login —superuser -P majordom
-# укажите пароль: majordom
-createdb majordom_dev -O majordom
+createuser —createdb —login —superuser -P pushbox
+# укажите пароль: pushbox
+createdb pushbox_dev -O pushbox

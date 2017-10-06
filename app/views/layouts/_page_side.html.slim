@@ -1,4 +1,6 @@
+- nav_entities ||= raise 'nav_entities undefined'
+
 .b-page-side
   .b-page-side_nav
-    - layout_entity.page_side_nav_item_entities.each do |item_entity|
+    - nav_entities.each do |item_entity|
       a(href=item_entity.url class=('is-active' if item_entity.is_active))= item_entity.title

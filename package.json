@@ -1,5 +1,5 @@
 {
-  "name": "majordom",
+  "name": "pushbox",
   "version": "1.0.0",
   "description": "",
   "main": "gulpfile.js",
@@ -17,6 +17,7 @@
     "css-loader": "0.26.4",
     "del": "^3.0.0",
     "extract-text-webpack-plugin": "^3.0.0",
+    "flatpickr": "^3.0.7",
     "gulp": "^3.9.1",
     "gulp-livereload": "^3.8.1",
     "gulp-rev-all": "^0.9.7",
@@ -33,9 +34,5 @@
     "webpack": "3.6.0",
     "webpack-merge": "4.1.0",
     "zepto": "1.2.0"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+ssh://git@bitbucket.org/vursen/majordom.git"
   }
 }

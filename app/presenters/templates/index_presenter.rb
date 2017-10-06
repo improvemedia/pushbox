@@ -1,29 +1,19 @@
-class Admin::Chatrooms::IndexPresenter < Admin::ApplicationPresenter
-  class ChatEntity
-    include Virtus.model
-
-    attribute :name
-    attribute :human_type
+class Templates::IndexPresenter < ApplicationPresenter
+  class TemplateEntity < BaseEntity
+    attribute :title
   end
 
-  def chat_entities
-    Chatroom.all.map { |chat| map_to_entity(chat) }
-  end
-
-  def greeting
-    'hello'
+  def template_entities
+    (1..5).map do |n|
+      OpenStruct.new(
+        title: "Шаблон #{n}"
+      )
+    end
   end
 
   private
 
-  def map_to_entity(chat)
-    ChatEntity.new(
-      name: chat.name,
-      human_type:  chat.d.human_type
-    )
-  end
-
   def active_page_side_nav_item
-    :chatrooms
+    :templates
   end
 end

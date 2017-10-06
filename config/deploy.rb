@@ -12,10 +12,10 @@ require 'mina/puma'
 #   repository   - Git repo to clone from. (needed by mina/git)
 #   branch       - Branch name to deploy. (needed by mina/git)
 
-set :application_name, 'majordom'
+set :application_name, 'pushbox'
 set :domain, '185.185.68.217'
-set :deploy_to, '/home/deploy/apps/majordom'
-set :repository, 'git@github.com:vursen/majordom.git'
+set :deploy_to, '/home/deploy/apps/pushbox'
+set :repository, 'git@github.com:vursen/pushbox.git'
 set :branch, 'master'
 
 set :chruby_path, '/usr/local/share/chruby/chruby.sh'

@@ -1,5 +1,5 @@
-rails_root = "/home/deploy/apps/majordom/current/inmyroom"
-shared_path = "/home/deploy/apps/majordom/inmyroom/shared"
+rails_root = "/home/deploy/apps/pushbox/current/inmyroom"
+shared_path = "/home/deploy/apps/pushbox/inmyroom/shared"
 pid_file   = "#{shared_path}/tmp/pids/unicorn.pid"
 socket_file= "#{shared_path}/tmp/sockets/unicorn.sock"
 listen_address = "127.0.0.1:3001"

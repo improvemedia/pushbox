@@ -4,12 +4,13 @@ $dark-gray-color  = #ccc;
 $green-color      = #87a254;
 $red-color        = #c12b3a;
 
-$panel-shadow = 0 0 5px rgba(#000, 0.08);
+$panel-shadow = 0 0 5px rgba(#000, 0.1);
 
 @import 'kouto-swiss';
 
 @require 'common/mixins';
 
-@require 'admin/base';
-@require 'admin/blocks/**/*';
-@require 'admin/pages/**/*';
+@require 'main/base';
+@require 'main/vendor/flatpickr';
+@require 'main/blocks/**/*';
+@require 'main/pages/**/*';

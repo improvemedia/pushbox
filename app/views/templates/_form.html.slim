@@ -3,23 +3,13 @@
 = form_for [:admin, form], url: form.url do |f|
   .b-form
     .b-form_field
-      label Имя
+      label Название
       .b-form-control__textline
-        = f.text_field :name
+        = f.text_field :title
 
     .b-form_field
-      label Комната клиента
-      .b-form-control__select
-        = f.select :chatroom_id, f.object.chatroom_collection
-
-    .b-form_field
-      label Комната модератора
-      .b-form-control__select
-        = f.select :moderator_chatroom_id, f.object.moderator_chatroom_collection
-
-    .b-form_field
-      label.b-form-control__checkbox
-        = f.check_box :active
-        | Активен
+      label Шаблон
+      .b-form-control__textarea$$c-TextareaControl(data-props={ flexible: true }.to_json)
+        = f.text_area :body, data: { el: 'c-TextareaControl/input' }
 
     button.b-btn.b-btn__skin_success.b-btn__size_m(type='submit') Сохранить

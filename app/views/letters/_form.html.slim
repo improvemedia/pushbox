@@ -1,0 +1,25 @@
+- form ||= raise 'undefined form'
+
+= form_for [:admin, form], url: form.url do |f|
+  .b-form
+    .b-form_field
+      label Название
+      .b-form-control__textline
+        = f.text_field :title
+
+    .b-form_field
+      label Сегмент
+      .b-form-control__select
+        = f.select :segment_id, form.segment_collection
+
+    .b-form_field
+      label Время запуска
+      .b-form-control__date$$c-DateControl
+        = f.text_field :start_at, data: { el: 'c-DateControl/input' }
+
+    .b-form_field
+      label Шаблон
+      .b-form-control__select
+        = f.select :template_id, form.template_collection
+
+    button.b-btn.b-btn__skin_success.b-btn__size_m(type='submit') Сохранить

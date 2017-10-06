@@ -11,7 +11,7 @@ threads threads_count, threads_count
 #
 #port        ENV.fetch("PORT") { 3000 }
 
-tag 'majordom'
+tag 'pushbox'
 
 # Specifies the `environment` that Puma will run in.
 #
