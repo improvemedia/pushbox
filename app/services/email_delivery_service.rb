@@ -1,4 +1,4 @@
-class LetterDispatcherService
+class EmailDeliveryService
   include Virtus.model
   extend Memoist
 
