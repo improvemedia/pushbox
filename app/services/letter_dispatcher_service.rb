@@ -10,7 +10,8 @@ class LetterDispatcherService
 
   def dispatch_async
     users_for_dispatch.find_each do |user|
-      SendEmailWorker.perform_async(user_id, letter.pushbox_templates_id)
+      user_data = user.attributes.slice('email', 'first_name').compact
+      SendEmailWorker.perform_async(user_data, letter.pushbox_templates_id)
     end
   end
 
