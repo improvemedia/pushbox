@@ -4,11 +4,11 @@ class LetterDispatcherService
 
   attribute :letter_id, Integer
 
-  def self.dispatch(letter_id:)
-    new(letter_id: letter_id).dispatch
+  def self.dispatch_async(letter_id:)
+    new(letter_id: letter_id).dispatch_async
   end
 
-  def dispatch
+  def dispatch_async
     users_for_dispatch.find_each do |user|
       SendEmailsWorker.perform_async(user_id, letter.pushbox_templates_id)
     end
