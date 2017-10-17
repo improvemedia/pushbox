@@ -1,7 +1,11 @@
-class Templates::EditPresenter < ApplicationPresenter
-  attribute :template, Template
+# frozen_string_literal: true
 
-  def template_form
-    TemplateForm.new(template: template)
+module Templates
+  class EditPresenter < ApplicationPresenter
+    attribute :template, Template
+
+    def template_form
+      TemplateForm.new(template: template)
+    end
   end
 end

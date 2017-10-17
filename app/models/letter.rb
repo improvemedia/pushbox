@@ -1,11 +1,9 @@
-class Letter < ApplicationRecord
-  def self.table_name
-    'pushbox_' + super
-  end
+# frozen_string_literal: true
 
+class Letter < ApplicationRecord
   belongs_to :template, optional: true
 
   def segment
-    'mock'
+    "mock"
   end
 end

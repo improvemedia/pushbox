@@ -1,12 +1,15 @@
-module UserRepository
+# frozen_string_literal: true
 
-  def self.for_segment(segment)
-    model_class.where(type: 'User').limit(3000)
+module UserRepository
+  module_function
+
+  def for_segment(_segment)
+    model_class.where(type: "User").limit(3000)
   end
 
   private
 
-  def self.model_class
+  def model_class
     User
   end
 end

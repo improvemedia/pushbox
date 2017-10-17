@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class BaseDecorator
   include WithHelperAndRoutingConcern
 
@@ -6,5 +8,4 @@ class BaseDecorator
   def initialize(object)
     self.object = object
   end
-
 end

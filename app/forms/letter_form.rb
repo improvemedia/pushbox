@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class LetterForm < BaseForm
-  form_name 'letter'
+  form_name :letter
 
   attribute :letter
 
@@ -9,20 +11,10 @@ class LetterForm < BaseForm
   attribute :start_at,    Date
 
   def persist
-    letter.update_attributes(letter_attributes)
+    letter.update(letter_attributes)
   end
 
-  def errors
-    letter.errors
-  end
-
-  def persisted?
-    !letter.new_record?
-  end
-
-  def id
-    letter.id
-  end
+  delegate :id, :errors, :persisted?, to: :letter
 
   def segment_collection
     []
@@ -35,6 +27,9 @@ class LetterForm < BaseForm
   private
 
   def letter_attributes
-    attributes.slice(:title, :segment_id, :start_at).merge(pushbox_template_id: template_id).compact
+    attributes
+      .slice(:title, :segment_id, :start_at)
+      .merge(pushbox_template_id: template_id)
+      .compact
   end
 end

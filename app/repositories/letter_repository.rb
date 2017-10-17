@@ -1,16 +1,17 @@
+# frozen_string_literal: true
+
 module LetterRepository
+  module_function
 
-  def self.for_send
+  delegate :find, to: :model_class
+
+  def for_send
     model_class.all
-  end
-
-  def self.find(id)
-    model_class.find(id)
   end
 
   private
 
-  def self.model_class
+  def model_class
     Letter
   end
 end

@@ -1,10 +1,13 @@
-class Letters::IndexPresenter < ApplicationPresenter
-  def letter_entities
-  end
+# frozen_string_literal: true
 
-  private
+module Letters
+  class IndexPresenter < ApplicationPresenter
+    def letter_entities; end
 
-  def active_page_side_nav_item
-    :letters
+    private
+
+    def active_page_side_nav_item
+      :letters
+    end
   end
 end

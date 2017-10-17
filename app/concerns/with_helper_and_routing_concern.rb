@@ -1,29 +1,26 @@
+# frozen_string_literal: true
+
 module WithHelperAndRoutingConcern
   extend ActiveSupport::Concern
 
+  # rubocop:disable Style/ClassVars
   module ClassMethods
-    @@__h       = nil
-    @@__r       = nil
-
     def h
-      return @@__h if @@__h
-      @@__h = ApplicationController.new.view_context
+      @@__h ||= ApplicationController.new.view_context
     end
+
     def r
-      return @@__r if @@__r
-      o = Object.new
-      class << o
-        include Rails.application.routes.url_helpers
-        #include UrlHelpersExtension
+      @@__r ||= begin
+        Object.new.tap do |obj|
+          obj.singleton_class.include(Rails.application.routes.url_helpers)
+        end
       end
-     @@__r = o
     end
   end
+  # rubocop:enable Style/ClassVars
 
   def h
-    return @___h if @___h
-    view_context = respond_to?('__view_context') ? __view_context : nil
-    @___h = view_context || self.class.h
+    @___h ||= respond_to?(:__view_context) ? __view_context : self.class.h
   end
 
   def r

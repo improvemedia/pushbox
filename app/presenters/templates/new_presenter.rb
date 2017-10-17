@@ -1,10 +1,14 @@
-class Templates::NewPresenter < ApplicationPresenter
-  attribute :template, Template, default: Template.new
+# frozen_string_literal: true
 
-  attribute :title, String
-  attribute :body,  String
+module Templates
+  class NewPresenter < ApplicationPresenter
+    attribute :template, Template, default: -> { Template.new }
 
-  def template_form
-    TemplateForm.new(template: template)
+    attribute :title, String
+    attribute :body,  String
+
+    def template_form
+      TemplateForm.new(template: template)
+    end
   end
 end

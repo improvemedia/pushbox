@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class LettersController < ApplicationController
   def index
     @presenter = presenter
@@ -11,9 +13,9 @@ class LettersController < ApplicationController
     form = LetterForm.new(create_params)
 
     if form.save
-      redirect_to action: :index, notice: 'Рассылка создана'
+      redirect_to action: :index, notice: "Рассылка создана"
     else
-      render :new, locals: { presenter: presenter_for('new', create_params) }
+      render :new, locals: { presenter: presenter_for("new", create_params) }
     end
   end
 

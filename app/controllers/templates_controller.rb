@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class TemplatesController < ApplicationController
   def index
     @presenter = presenter
@@ -15,18 +17,18 @@ class TemplatesController < ApplicationController
     form = TemplateForm.new(create_params)
 
     if form.save
-      redirect_to action: :index, notice: 'Шаблон создан'
+      redirect_to action: :index, notice: "Шаблон создан"
     else
-      render :new, locals: { presenter: presenter_for('new', create_params) }
+      render :new, locals: { presenter: presenter_for("new", create_params) }
     end
   end
 
   def update
     form = TemplateForm.new(update_params)
     if form.save
-      redirect_to template_path(form.template), notice: 'Успешно'
+      redirect_to template_path(form.template), notice: "Успешно"
     else
-      render :edit, locals: { presenter: presenter_for('edit', update_params) }
+      render :edit, locals: { presenter: presenter_for("edit", update_params) }
     end
   end
 

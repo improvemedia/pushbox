@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class TemplateForm < BaseForm
-  form_name 'template'
+  form_name :template
 
   attribute :template
 
@@ -7,22 +9,12 @@ class TemplateForm < BaseForm
   attribute :body,  String
 
   def persist
-    template.update_attributes(template_attributes)
+    template.update(template_attributes)
   end
 
-  def errors
-    template.errors
-  end
+  delegate :id, :errors, :persisted?, to: :template
 
-  def persisted?
-    !template.new_record?
-  end
-
-  def id
-    template.id
-  end
-
-  private 
+  private
 
   def template_attributes
     attributes.slice(:title, :body)

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class LetterDispatcherService
   include Virtus.model
   extend Memoist
@@ -10,7 +12,7 @@ class LetterDispatcherService
 
   def dispatch_async
     users_for_dispatch.find_each do |user|
-      user_data = user.attributes.slice('email', 'first_name').compact
+      user_data = user.attributes.slice("email", "first_name").compact
       SendEmailWorker.perform_async(user_data, letter.pushbox_templates_id)
     end
   end

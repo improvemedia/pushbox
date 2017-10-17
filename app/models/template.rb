@@ -1,7 +1,5 @@
-class Template < ApplicationRecord
-  def self.table_name
-    'pushbox_' + super
-  end
+# frozen_string_literal: true
 
-  has_many :letters
+class Template < ApplicationRecord
+  has_many :letters, dependent: :restrict_with_error
 end

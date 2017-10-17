@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class EmailDeliveryService
   include Virtus.model
   extend Memoist
@@ -16,9 +18,7 @@ class EmailDeliveryService
 
   private
 
-  def render_email
-  end
+  def render_email; end
 
-  def send_email(email)
-  end
+  def send_email(email); end
 end
