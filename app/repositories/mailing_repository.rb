@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module LetterRepository
+module MailingRepository
   module_function
 
   delegate :find, to: :model_class
@@ -12,6 +12,6 @@ module LetterRepository
   private
 
   def model_class
-    Letter
+    Mailing
   end
 end

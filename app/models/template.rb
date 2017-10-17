@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
 class Template < ApplicationRecord
-  has_many :letters, dependent: :restrict_with_error
+  include Models::SoftDeletable
+
+  has_many :mailings, dependent: :restrict_with_error
 end

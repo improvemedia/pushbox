@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class LetterDispatcherService
+class MailingDispatcherService
   include Virtus.model
   extend Memoist
 

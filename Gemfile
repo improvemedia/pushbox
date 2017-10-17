@@ -17,10 +17,12 @@ gem "sidekiq"
 
 gem "dotenv-rails"
 gem "enumerize"
-gem "formtastic"
 gem "memoist"
-gem "slim"
+gem "state_machines-activerecord"
 gem "virtus"
+
+gem "formtastic"
+gem "slim-rails"
 
 group :development, :test do
   gem "pry-byebug"
@@ -51,5 +53,3 @@ group :deploy do
   gem "mina-puma",         require: false
   gem "mina-unicorn",      require: false
 end
-
-gem "tzinfo-data", platforms: %i[mingw mswin x64_mingw jruby]

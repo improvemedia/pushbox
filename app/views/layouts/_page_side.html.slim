@@ -3,4 +3,4 @@
 .b-page-side
   .b-page-side_nav
     - nav_entities.each do |item_entity|
-      a(href=item_entity.url class=('is-active' if item_entity.is_active))= item_entity.title
+      a(href=item_entity.url class=('is-active' if item_entity.active?))= item_entity.title

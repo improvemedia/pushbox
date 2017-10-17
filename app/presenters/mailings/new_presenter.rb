@@ -1,16 +1,16 @@
 # frozen_string_literal: true
 
-module Letters
+module Mailings
   class NewPresenter < ApplicationPresenter
-    attribute :letter, Letter, default: -> { Letter.new }
+    attribute :mailing, Mailing, default: proc { Mailing.new }
 
     attribute :title,       String
     attribute :template_id, Integer
     attribute :segment_id,  Integer
-    attribute :start_at,    Date
+    attribute :start_at,    Time
 
-    def letter_form
-      LetterForm.new(letter: letter)
+    def mailing_form
+      MailingForm.new(mailing: mailing)
     end
   end
 end

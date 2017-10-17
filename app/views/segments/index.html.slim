@@ -1,0 +1,19 @@
+.b-page-title Сегменты
+
+table.b-table
+  thead
+    tr
+      th Название
+      th Действие
+
+  tbody
+    - @presenter.segment_entities.each do |segment_entity|
+      tr
+        td= segment_entity.title
+        td._actions
+          a.b-btn.b-btn__skin_success.b-btn__size_s(href='#') Превью
+          a.b-btn.b-btn__skin_success.b-btn__size_s(href='#') Редактировать
+          a.b-btn.b-btn__skin_danger.b-btn__size_s(href='#') Удалить
+
+.b-bottom-panel
+  a.b-btn.b-btn__skin_success.b-btn__size_m(href=new_segment_path) Создать шаблон

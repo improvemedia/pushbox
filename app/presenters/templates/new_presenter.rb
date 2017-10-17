@@ -2,7 +2,7 @@
 
 module Templates
   class NewPresenter < ApplicationPresenter
-    attribute :template, Template, default: -> { Template.new }
+    attribute :template, Template, default: proc { Template.new }
 
     attribute :title, String
     attribute :body,  String

@@ -1,13 +1,13 @@
 # frozen_string_literal: true
 
-module Letters
+module Mailings
   class IndexPresenter < ApplicationPresenter
-    def letter_entities; end
+    def mailing_entities; end
 
     private
 
     def active_page_side_nav_item
-      :letters
+      :mailings
     end
   end
 end

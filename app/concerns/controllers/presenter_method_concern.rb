@@ -35,9 +35,9 @@ module Controllers
         create: "form"
       }.freeze
 
-      attribute :action_name
-      attribute :controller_name
-      attribute :class_name
+      attribute :action_name,     String
+      attribute :controller_name, String
+      attribute :class_name,      String
 
       def self.build(options = {})
         local_params = options.delete(:local_params)

@@ -1,0 +1,15 @@
+- form ||= raise 'undefined form'
+
+= form_for form do |f|
+  .b-form
+    .b-form_field
+      label Название
+      .b-form-control__textline
+        = f.text_field :title
+
+    .b-form_field
+      label Пользователи
+      .b-form-control__select
+        = f.select :user_ids, form.user_collection, {}, multiple: true
+
+    button.b-btn.b-btn__skin_success.b-btn__size_m(type='submit') Сохранить

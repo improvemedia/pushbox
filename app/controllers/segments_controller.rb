@@ -1,6 +1,4 @@
-# frozen_string_literal: true
-
-class TemplatesController < ApplicationController
+class SegmentsController < ApplicationController
   def index
     @presenter = presenter
   end
@@ -14,47 +12,47 @@ class TemplatesController < ApplicationController
   end
 
   def create
-    form = TemplateForm.new(create_params)
+    form = SegmentForm.new(create_params)
 
     if form.save
-      redirect_to action: :index, notice: "Шаблон создан"
+      redirect_to segments_path, notice: "Шаблон создан"
     else
       render :new, locals: { presenter: presenter_for(:new, create_params) }
     end
   end
 
   def update
-    form = TemplateForm.new(update_params)
+    form = SegmentForm.new(update_params)
     if form.save
-      redirect_to template_path(form.template), notice: t("common.success")
+      redirect_to segment_path(form.segment), notice: t("common.success")
     else
       render :edit, locals: { presenter: presenter_for(:edit, update_params) }
     end
   end
 
   def destroy
-    template.mark_as_deleted
+    segment.mark_as_deleted
 
-    redirect_to templates_path, notice: t("common.success")
+    redirect_to segments_path, notice: t("common.success")
   end
 
   private
 
-  def template
-    Template.actual.find(params[:id])
+  def segment
+    Segment.actual.find(params[:id])
   end
-  memoize :template
+  memoize :segment
 
   def show_params
     {}
   end
 
   def create_params
-    form_params.merge(template: Template.new)
+    form_params.merge(segment: Segment.new)
   end
 
   def update_params
-    form_params.merge(template: template)
+    form_params.merge(segment: segment)
   end
 
   def new_params
@@ -66,6 +64,6 @@ class TemplatesController < ApplicationController
   end
 
   def form_params
-    params.require(:template).permit(:title, :body)
+    params.require(:segment).permit(:title, :user_ids)
   end
 end

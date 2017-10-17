@@ -1144,18 +1144,37 @@ ActiveRecord::Schema.define(version: 20171006093910) do
     t.index ["paid_service_id"], name: "index_purchased_services_on_paid_service_id"
   end
 
-  create_table "pushbox_letters", force: :cascade do |t|
+  create_table "pushbox_mailings", force: :cascade do |t|
     t.string "title", null: false
     t.bigint "pushbox_templates_id"
+    t.bigint "pushbox_segments_id"
     t.datetime "start_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["pushbox_templates_id"], name: "index_pushbox_letters_on_pushbox_templates_id"
+    t.index ["pushbox_segments_id"], name: "index_pushbox_mailings_on_pushbox_segments_id"
+    t.index ["pushbox_templates_id"], name: "index_pushbox_mailings_on_pushbox_templates_id"
+  end
+
+  create_table "pushbox_segment_users", force: :cascade do |t|
+    t.bigint "pushbox_segments_id"
+    t.bigint "users_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["pushbox_segments_id"], name: "index_pushbox_segment_users_on_pushbox_segments_id"
+    t.index ["users_id"], name: "index_pushbox_segment_users_on_users_id"
+  end
+
+  create_table "pushbox_segments", force: :cascade do |t|
+    t.string "title"
+    t.string "state"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "pushbox_templates", force: :cascade do |t|
     t.string "title", null: false
     t.text "body"
+    t.string "state"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -1452,7 +1471,7 @@ ActiveRecord::Schema.define(version: 20171006093910) do
     t.integer "company_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string "state"
+    t.string "state", limit: 255
     t.index ["company_id"], name: "index_stocks_on_company_id"
   end
 
@@ -1849,4 +1868,8 @@ ActiveRecord::Schema.define(version: 20171006093910) do
     t.index ["user_id"], name: "index_yml_uploads_on_user_id"
   end
 
+  add_foreign_key "pushbox_mailings", "pushbox_segments", column: "pushbox_segments_id"
+  add_foreign_key "pushbox_mailings", "pushbox_templates", column: "pushbox_templates_id"
+  add_foreign_key "pushbox_segment_users", "pushbox_segments", column: "pushbox_segments_id"
+  add_foreign_key "pushbox_segment_users", "users", column: "users_id"
 end
