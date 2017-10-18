@@ -7,7 +7,7 @@ module Mailings
     attribute :title,       String
     attribute :template_id, Integer
     attribute :segment_id,  Integer
-    attribute :start_at,    Time
+    attribute :process_at,  Time
 
     def mailing_form
       MailingForm.new(mailing: mailing)

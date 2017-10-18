@@ -2,8 +2,8 @@
 
 namespace :email_marketing do
   task send_emails: :environment do
-    MailingRepository.for_send.find_each do |letter|
-      MailingDispatcherWorker.perform_async(letter.id)
+    MailingRepository.for_send.find_each do |mailing|
+      MailingDispatcherJob.perform_later(mailing.id)
     end
   end
 end

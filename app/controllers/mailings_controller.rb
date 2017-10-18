@@ -35,7 +35,7 @@ class MailingsController < ApplicationController
   def create_params
     params
       .require(:mailing)
-      .permit(:title, :start_at, :template_id, :segment_id)
+      .permit(:title, :dispatch_at, :template_id, :segment_id)
       .merge(mailing: Mailing.new)
   end
 end

@@ -8,7 +8,7 @@ class MailingForm < BaseForm
   attribute :title,       String
   attribute :template_id, Integer
   attribute :segment_id,  Integer
-  attribute :start_at,    Time
+  attribute :dispatch_at, Time
 
   def persist
     mailing.update(mailing_attributes)
@@ -28,7 +28,7 @@ class MailingForm < BaseForm
 
   def mailing_attributes
     attributes
-      .slice(:title, :segment_id, :start_at)
+      .slice(:title, :segment_id, :dispatch_at)
       .merge(pushbox_template_id: template_id)
       .compact
   end

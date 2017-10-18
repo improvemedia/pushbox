@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171006093910) do
+ActiveRecord::Schema.define(version: 20171017214510) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -1144,11 +1144,24 @@ ActiveRecord::Schema.define(version: 20171006093910) do
     t.index ["paid_service_id"], name: "index_purchased_services_on_paid_service_id"
   end
 
+  create_table "pushbox_letters", force: :cascade do |t|
+    t.bigint "pushbox_mailings_id"
+    t.bigint "users_id"
+    t.string "state"
+    t.text "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["pushbox_mailings_id"], name: "index_pushbox_letters_on_pushbox_mailings_id"
+    t.index ["users_id"], name: "index_pushbox_letters_on_users_id"
+  end
+
   create_table "pushbox_mailings", force: :cascade do |t|
     t.string "title", null: false
     t.bigint "pushbox_templates_id"
     t.bigint "pushbox_segments_id"
-    t.datetime "start_at"
+    t.string "state"
+    t.string "dispatch_state"
+    t.datetime "dispatch_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["pushbox_segments_id"], name: "index_pushbox_mailings_on_pushbox_segments_id"
@@ -1868,6 +1881,8 @@ ActiveRecord::Schema.define(version: 20171006093910) do
     t.index ["user_id"], name: "index_yml_uploads_on_user_id"
   end
 
+  add_foreign_key "pushbox_letters", "pushbox_mailings", column: "pushbox_mailings_id"
+  add_foreign_key "pushbox_letters", "users", column: "users_id"
   add_foreign_key "pushbox_mailings", "pushbox_segments", column: "pushbox_segments_id"
   add_foreign_key "pushbox_mailings", "pushbox_templates", column: "pushbox_templates_id"
   add_foreign_key "pushbox_segment_users", "pushbox_segments", column: "pushbox_segments_id"

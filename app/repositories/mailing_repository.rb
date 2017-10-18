@@ -1,17 +1,21 @@
 # frozen_string_literal: true
 
-module MailingRepository
-  module_function
+class MailingRepository < BaseRepository
+  self.model_class = Mailing
 
-  delegate :find, to: :model_class
+  delegate_to_instance :for_send
 
   def for_send
-    model_class.all
+    self.class.new(
+      scope
+        .with_state(:pending)
+        .where("dispatch_at <= ?", Time.current)
+    )
   end
 
   private
 
-  def model_class
-    Mailing
+  def default_scope
+    model_class.all
   end
 end

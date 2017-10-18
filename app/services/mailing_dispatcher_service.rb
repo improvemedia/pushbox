@@ -1,31 +1,25 @@
 # frozen_string_literal: true
 
-class MailingDispatcherService
-  include Virtus.model
-  extend Memoist
+class MailingDispatcherService < BaseService
+  BATCH_SIZE = 100
 
-  attribute :letter_id, Integer
+  attribute :mailing_id, Integer
 
-  def self.dispatch_async(letter_id:)
-    new(letter_id: letter_id).dispatch_async
-  end
-
-  def dispatch_async
-    users_for_dispatch.find_each do |user|
-      user_data = user.attributes.slice("email", "first_name").compact
-      SendEmailWorker.perform_async(user_data, letter.pushbox_templates_id)
+  def call
+    mailing.start_dispatch!
+    (1..total_batches).each do |batch_index|
+      SendEmailJob.perform_later(mailing_id, batch_index, BATCH_SIZE)
     end
   end
 
   private
 
-  def letter
-    LetterRepository.find(letter_id)
+  def mailing
+    MailingRepository.find(letter_id)
   end
-  memoize :letter
+  memoize :mailing
 
-  def users_for_dispatch
-    UserRepository.for_segment(letter.segment)
+  def total_batches
+    UserRepository.for_segment(mailing.segment).total_batches(BATCH_SIZE)
   end
-  memoize :users_for_dispatch
 end

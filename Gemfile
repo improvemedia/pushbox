@@ -17,6 +17,7 @@ gem "sidekiq"
 
 gem "dotenv-rails"
 gem "enumerize"
+gem "kaminari"
 gem "memoist"
 gem "state_machines-activerecord"
 gem "virtus"

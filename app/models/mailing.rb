@@ -5,4 +5,10 @@ class Mailing < ApplicationRecord
 
   belongs_to :template
   belongs_to :segment, optional: true
+
+  state_machine :dispatch_state, initial: :pending do
+    event :start_dispatch do
+      transition pending: :processed
+    end
+  end
 end

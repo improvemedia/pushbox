@@ -8,14 +8,17 @@ class SegmentForm < BaseForm
   attribute :title,    String
   attribute :user_ids, Array[Integer]
 
+  delegate :id, :errors, :persisted?, to: :segment
+  delegate_attributes :title, :user_ids, to: :segment
+
   def persist
     segment.update(segment_attributes)
   end
 
-  delegate :id, :errors, :persisted?, to: :segment
-
   def user_collection
-    User.limit(10).pluck(:first_name, :id)
+    h.options_for_select(
+      UserRepository.for_select, segment.user_ids
+    )
   end
 
   private
