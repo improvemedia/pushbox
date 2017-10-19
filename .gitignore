@@ -29,3 +29,5 @@ config/rev-manifest.json
 vendor/bundle
 
 .env.*
+
+spec/examples.txt

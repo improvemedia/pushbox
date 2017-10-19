@@ -21,12 +21,12 @@ class LetterDeliveryService < BaseService
   end
   memoize :mailing
 
-  def recievers
+  def receivers
     UserRepository.for_segment(mailing.segment).batch(batch_index, batch_size)
   end
 
   def each_letter
-    recievers.find_each do |user|
+    receivers.find_each do |user|
       letter = LetterRepository.find_or_initialize_by(mailing: mailing, user: user)
       next if letter.sent?
 

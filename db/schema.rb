@@ -1145,36 +1145,37 @@ ActiveRecord::Schema.define(version: 20171017214510) do
   end
 
   create_table "pushbox_letters", force: :cascade do |t|
-    t.bigint "pushbox_mailings_id"
-    t.bigint "users_id"
+    t.bigint "mailing_id"
+    t.bigint "user_id"
     t.string "state"
+    t.string "subject"
     t.text "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["pushbox_mailings_id"], name: "index_pushbox_letters_on_pushbox_mailings_id"
-    t.index ["users_id"], name: "index_pushbox_letters_on_users_id"
+    t.index ["mailing_id"], name: "index_pushbox_letters_on_mailing_id"
+    t.index ["user_id"], name: "index_pushbox_letters_on_user_id"
   end
 
   create_table "pushbox_mailings", force: :cascade do |t|
     t.string "title", null: false
-    t.bigint "pushbox_templates_id"
-    t.bigint "pushbox_segments_id"
+    t.bigint "template_id"
+    t.bigint "segment_id"
     t.string "state"
     t.string "dispatch_state"
     t.datetime "dispatch_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["pushbox_segments_id"], name: "index_pushbox_mailings_on_pushbox_segments_id"
-    t.index ["pushbox_templates_id"], name: "index_pushbox_mailings_on_pushbox_templates_id"
+    t.index ["segment_id"], name: "index_pushbox_mailings_on_segment_id"
+    t.index ["template_id"], name: "index_pushbox_mailings_on_template_id"
   end
 
   create_table "pushbox_segment_users", force: :cascade do |t|
-    t.bigint "pushbox_segments_id"
-    t.bigint "users_id"
+    t.bigint "segment_id"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["pushbox_segments_id"], name: "index_pushbox_segment_users_on_pushbox_segments_id"
-    t.index ["users_id"], name: "index_pushbox_segment_users_on_users_id"
+    t.index ["segment_id"], name: "index_pushbox_segment_users_on_segment_id"
+    t.index ["user_id"], name: "index_pushbox_segment_users_on_user_id"
   end
 
   create_table "pushbox_segments", force: :cascade do |t|
@@ -1881,10 +1882,10 @@ ActiveRecord::Schema.define(version: 20171017214510) do
     t.index ["user_id"], name: "index_yml_uploads_on_user_id"
   end
 
-  add_foreign_key "pushbox_letters", "pushbox_mailings", column: "pushbox_mailings_id"
-  add_foreign_key "pushbox_letters", "users", column: "users_id"
-  add_foreign_key "pushbox_mailings", "pushbox_segments", column: "pushbox_segments_id"
-  add_foreign_key "pushbox_mailings", "pushbox_templates", column: "pushbox_templates_id"
-  add_foreign_key "pushbox_segment_users", "pushbox_segments", column: "pushbox_segments_id"
-  add_foreign_key "pushbox_segment_users", "users", column: "users_id"
+  add_foreign_key "pushbox_letters", "pushbox_mailings", column: "mailing_id"
+  add_foreign_key "pushbox_letters", "users"
+  add_foreign_key "pushbox_mailings", "pushbox_segments", column: "segment_id"
+  add_foreign_key "pushbox_mailings", "pushbox_templates", column: "template_id"
+  add_foreign_key "pushbox_segment_users", "pushbox_segments", column: "segment_id"
+  add_foreign_key "pushbox_segment_users", "users"
 end
