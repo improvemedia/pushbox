@@ -1,3 +1,5 @@
+require 'mina/multistage'
+require 'mina/multi_server'
 require 'mina/rails'
 require 'mina/git'
 require 'mina/chruby'
@@ -12,15 +14,8 @@ require 'mina/puma'
 #   repository   - Git repo to clone from. (needed by mina/git)
 #   branch       - Branch name to deploy. (needed by mina/git)
 
-set :application_name, 'pushbox'
-set :domain, '185.185.68.217'
-set :deploy_to, '/home/deploy/apps/pushbox'
-set :repository, 'git@github.com:vursen/pushbox.git'
-set :branch, 'master'
-
 set :chruby_path, '/usr/local/share/chruby/chruby.sh'
 # Optional settings:
-set :user, 'deploy'          # Username in the server to SSH to.
 #   set :port, '30000'           # SSH port number.
 set :forward_agent, true     # SSH forward_agent.
 #
@@ -52,7 +47,7 @@ end
 
 # Put any custom commands you need to run at setup
 # All paths in `shared_dirs` and `shared_paths` will be created on their own.
-task :setup do
+task setup: :environment do
   # command %{rbenv install 2.3.0}
   shared_path  = fetch(:shared_path)
   command %(mkdir -p "#{shared_path}/tmp/sockets")
@@ -61,7 +56,7 @@ task :setup do
   command %(chmod g+rx,u+rwx "#{shared_path}/tmp/pids")
 end
 
-task :setup_front_environment do
+task setup_front_environment: :environment do
   command %(curl -o- -L https://yarnpkg.com/install.sh | bash)
 
   command %(curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.4/install.sh | bash)
@@ -79,24 +74,26 @@ end
 
 
 task :puma_start do
+  command %(source $HOME/.bash_profile)
   invoke :'puma:start'
   command %(sleep 5)
 end
 
 task :puma_restart do
+  command %(source $HOME/.bash_profile)
   invoke :'puma:restart'
   command %(sleep 5)
 end
 
 
 desc "Deploys the current version to the server."
-task :deploy do
+task deploy: :environment do
   # uncomment this line to make sure you pushed your local branch to the remote origin
   # invoke :'git:ensure_pushed'
   deploy do
     # Put things that will set up an empty directory into a fully set-up
     # instance of your project.
-    command %(source /home/deploy/.bash_profile)
+    command %(source $HOME/.bash_profile)
     invoke :'git:clone'
     invoke :'deploy:link_shared_paths'
     invoke :'bundle:install'

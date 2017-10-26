@@ -70,6 +70,8 @@ group :deploy do
   gem 'mina',      require: false
   gem 'mina-puma', require: false
   gem 'mina-unicorn', :require => false
+  gem 'mina-multistage', require: false
+  gem 'mina-multi_server', require: false
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
