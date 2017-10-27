@@ -77,13 +77,12 @@ end
 task :puma_start do
   command %(source $HOME/.bash_profile)
   invoke :"puma:start"
-  command %(sleep 5)
 end
 
 task :puma_restart do
   command %(source $HOME/.bash_profile)
-  invoke :"puma:restart"
-  command %(sleep 5)
+  invoke :"puma:stop"
+  invoke :"puma:start"
 end
 
 desc "Deploys the current version to the server."
