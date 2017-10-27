@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Controllers
   module ActionPathMethodConcern
     extend ActiveSupport::Concern
@@ -7,11 +9,9 @@ module Controllers
     end
 
     def action_path
-      path = controller_path.split('/')
+      path = controller_path.split("/")
       path << action_name if controller_name != action_name
-      path.join('-')
+      path.join("-")
     end
   end
 end
-
-

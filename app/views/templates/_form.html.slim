@@ -1,6 +1,6 @@
 - form ||= raise 'undefined form'
 
-= form_for [:admin, form], url: form.url do |f|
+= form_for form do |f|
   .b-form
     .b-form_field
       label Название

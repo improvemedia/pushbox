@@ -6,7 +6,7 @@
 #
 
 default: &default
-  adapter:             postgresql
+  adapter:             postgis
   encoding:            unicode
   reconnect:           true
   pool:             20

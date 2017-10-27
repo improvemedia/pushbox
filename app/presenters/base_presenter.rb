@@ -1,4 +1,4 @@
-require 'memoist'
+# frozen_string_literal: true
 
 class BasePresenter
   extend Memoist

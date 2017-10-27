@@ -1,11 +1,13 @@
+# frozen_string_literal: true
+
 rails_root = "/home/deploy/apps/pushbox/current/inmyroom"
 shared_path = "/home/deploy/apps/pushbox/inmyroom/shared"
-pid_file   = "#{shared_path}/tmp/pids/unicorn.pid"
-socket_file= "#{shared_path}/tmp/sockets/unicorn.sock"
+pid_file = "#{shared_path}/tmp/pids/unicorn.pid"
+socket_file = "#{shared_path}/tmp/sockets/unicorn.sock"
 listen_address = "127.0.0.1:3001"
 log_file   = "#{shared_path}/inmyroom/log/unicorn.log"
 err_log    = "#{shared_path}/inmyroom/log/unicorn.err"
-old_pid    = pid_file + '.oldbin'
+old_pid    = pid_file + ".oldbin"
 
 pid pid_file
 preload_app true
@@ -13,23 +15,23 @@ stderr_path err_log
 stdout_path log_file
 
 timeout 60
-listen listen_address, :backlog => 1024
+listen listen_address, backlog: 1024
 
 working_directory rails_root
 worker_processes 40
 
 GC.copy_on_write_friendly = true if GC.respond_to?(:copy_on_write_friendly=)
 
-before_exec do |server|
+before_exec do |_server|
   Dotenv.overload("#{rails_root}/.env", "#{rails_root}/.env.production")
-  ENV["BUNDLE_GEMFILE"] = "#{ rails_root }/Gemfile"
+  ENV["BUNDLE_GEMFILE"] = "#{rails_root}/Gemfile"
 end
 
-before_fork do |server, worker|
-  defined?(ActiveRecord::Base) and
-  ActiveRecord::Base.connection.disconnect!
+before_fork do |server, _worker|
+  defined?(ActiveRecord::Base) &&
+    ActiveRecord::Base.connection.disconnect!
 
-  if File.exists?(old_pid) && server.pid != old_pid
+  if File.exist?(old_pid) && server.pid != old_pid
     begin
       Process.kill("QUIT", File.read(old_pid).to_i)
     rescue Errno::ENOENT, Errno::ESRCH
@@ -38,7 +40,7 @@ before_fork do |server, worker|
   end
 end
 
-after_fork do |server, worker|
-  defined?(ActiveRecord::Base) and
-  ActiveRecord::Base.establish_connection
+after_fork do |_server, _worker|
+  defined?(ActiveRecord::Base) &&
+    ActiveRecord::Base.establish_connection
 end

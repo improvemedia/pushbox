@@ -1,0 +1,35 @@
+AllCops:
+  Exclude:
+    - config/**/*
+    - db/**/*
+
+Layout/AlignHash:
+  EnforcedHashRocketStyle: table
+  EnforcedColonStyle: table
+
+Lint/AssignmentInCondition:
+  AllowSafeAssignment: false
+
+Metrics/LineLength:
+  Max: 100
+
+Rails:
+  Enabled: true
+
+Style/CollectionMethods:
+  Enabled: true
+
+Style/Documentation:
+  Enabled: false
+
+Style/HashSyntax:
+  EnforcedStyle: ruby19_no_mixed_keys
+
+Style/ParenthesesAroundCondition:
+  AllowSafeAssignment: false
+
+Style/SignalException:
+  EnforcedStyle: only_raise
+
+Style/StringLiterals:
+  EnforcedStyle: double_quotes

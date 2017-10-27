@@ -1,0 +1,4 @@
+example_id                                             | status | run_time        |
+------------------------------------------------------ | ------ | --------------- |
+./spec/services/letter_delivery_service_spec.rb[1:1:1] | passed | 0.04012 seconds |
+./spec/services/letter_delivery_service_spec.rb[1:1:2] | passed | 0.63445 seconds |

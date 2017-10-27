@@ -27,3 +27,7 @@ config/rev-manifest.json
 
 .byebug_history
 vendor/bundle
+
+.env.*
+
+spec/examples.txt

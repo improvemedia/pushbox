@@ -1,19 +1,23 @@
-class Templates::IndexPresenter < ApplicationPresenter
-  class TemplateEntity < BaseEntity
-    attribute :title
-  end
+# frozen_string_literal: true
 
-  def template_entities
-    (1..5).map do |n|
-      OpenStruct.new(
-        title: "Шаблон #{n}"
-      )
+module Templates
+  class IndexPresenter < ApplicationPresenter
+    class TemplateEntity < BaseEntity
+      attribute :title
     end
-  end
 
-  private
+    def template_entities
+      (1..5).map do |n|
+        OpenStruct.new(
+          title: "Шаблон #{n}"
+        )
+      end
+    end
 
-  def active_page_side_nav_item
-    :templates
+    private
+
+    def active_page_side_nav_item
+      :templates
+    end
   end
 end
