@@ -1,4 +1,4 @@
-import DOMComponent from 'modules/DOMComponent.js';
+import DOMComponent from 'services/DOMComponent.js';
 import flatpickr from 'flatpickr';
 
 DOMComponent.register('c-DateControl', ($block, props = {}) => {

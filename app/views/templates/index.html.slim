@@ -4,16 +4,18 @@ table.b-table
   thead
     tr
       th Название
+      th Статус
       th Действие
 
   tbody
     - @presenter.template_entities.each do |template_entity|
       tr
         td= template_entity.title
+        td= template_entity.state
         td._actions
-          a.b-btn.b-btn__skin_success.b-btn__size_s(href='#') Превью
-          a.b-btn.b-btn__skin_success.b-btn__size_s(href='#') Редактировать
-          a.b-btn.b-btn__skin_danger.b-btn__size_s(href='#') Удалить
+          a.b-btn.b-btn__skin_success.b-btn__size_s(href=template_entity.preview_url) Превью
+          a.b-btn.b-btn__skin_success.b-btn__size_s(href=template_entity.edit_url) Редактировать
+          a.b-btn.b-btn__skin_danger.b-btn__size_s(href=template_entity.destroy_url) Удалить
 
 .b-bottom-panel
   a.b-btn.b-btn__skin_success.b-btn__size_m(href=new_template_path) Создать шаблон

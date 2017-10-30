@@ -10,7 +10,7 @@
     .b-form_field
       label Сегмент
       .b-form-control__select
-        = f.select :segment_id, form.segment_collection
+        = f.select :segment_id, form.segment_collection, prompt: 'Все пользователи'
 
     .b-form_field
       label Время запуска
@@ -20,6 +20,6 @@
     .b-form_field
       label Шаблон
       .b-form-control__select
-        = f.select :template_id, form.template_collection
+        = f.select :template_id, form.template_collection, prompt: 'Выберите шаблон'
 
     button.b-btn.b-btn__skin_success.b-btn__size_m(type='submit') Сохранить

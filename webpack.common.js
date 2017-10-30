@@ -30,7 +30,7 @@ module.exports = {
         use: "imports-loader?this=>window,define=>false,require=>false,module=>false,exports=>false"
       },
       {
-        test: /\.js$/,
+        test: /\.js|\.jsx$/,
         exclude: /node_modules/,
         use: 'babel-loader'
       },

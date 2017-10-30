@@ -8,12 +8,14 @@ table.b-table
 
   tbody
     - @presenter.segment_entities.each do |segment_entity|
-      tr
+      tr$$c-RailsItem
         td= segment_entity.title
         td._actions
-          a.b-btn.b-btn__skin_success.b-btn__size_s(href='#') Превью
-          a.b-btn.b-btn__skin_success.b-btn__size_s(href='#') Редактировать
-          a.b-btn.b-btn__skin_danger.b-btn__size_s(href='#') Удалить
+          a.b-btn.b-btn__skin_success.b-btn__size_s(href=segment_entity.edit_url) Редактировать
+          a.b-btn.b-btn__skin_danger.b-btn__size_s(
+            href=segment_entity.destroy_url
+            data-el='c-RailsItem/destroy'
+          ) Удалить
 
 .b-bottom-panel
   a.b-btn.b-btn__skin_success.b-btn__size_m(href=new_segment_path) Создать шаблон

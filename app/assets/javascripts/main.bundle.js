@@ -1,12 +1,11 @@
-import './../stylesheets/main.bundle.styl';
-import './libs/zepto.js';
-import './libs/zepto.element.js';
+import '../stylesheets/main.bundle.styl';
 
-import DOMComponent from './modules/DOMComponent.js';
+import 'libs/zepto.js';
+import 'libs/zepto.element.js';
 
 import 'main/components/DateControl.js';
 import 'main/components/TextareaControl.js';
+import 'main/components/CodeEditor.js';
+import 'main/components/RailsItem.js';
 
-$(() => {
-  DOMComponent.live();
-});
+import 'main/bootstrap.js';

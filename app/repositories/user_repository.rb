@@ -7,8 +7,8 @@ class UserRepository < BaseRepository
 
   delegate_to_instance :all, :batch, :for_select, :for_segment, :last, :total_batches
 
-  def for_select
-    scope.pluck("first_name || last_name, id")
+  def for_select(limit)
+    scope.pluck("first_name || last_name, id").last(limit)
   end
 
   def for_segment(segment)

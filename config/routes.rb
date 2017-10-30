@@ -5,5 +5,9 @@ Rails.application.routes.draw do
 
   resources :mailings, except: %i[edit update]
   resources :segments
-  resources :templates
+  resources :templates do
+    member do
+      get :preview
+    end
+  end
 end

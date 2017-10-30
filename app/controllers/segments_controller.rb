@@ -33,13 +33,13 @@ class SegmentsController < ApplicationController
   def destroy
     segment.mark_as_deleted
 
-    redirect_to segments_path, notice: t("common.success")
+    render json: { flash: { notice: 'Успешно удалено' } }
   end
 
   private
 
   def segment
-    Segment.actual.find(params[:id])
+    Segment.find(params[:id])
   end
   memoize :segment
 
@@ -60,7 +60,7 @@ class SegmentsController < ApplicationController
   end
 
   def edit_params
-    {}
+    { segment: segment }
   end
 
   def form_params

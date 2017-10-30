@@ -3,7 +3,7 @@
 class SegmentForm < BaseForm
   form_name :segment
 
-  attribute :segment
+  attribute :segment, Segment
 
   attribute :title,    String
   attribute :user_ids, Array[Integer]
@@ -16,9 +16,7 @@ class SegmentForm < BaseForm
   end
 
   def user_collection
-    h.options_for_select(
-      UserRepository.for_select, segment.user_ids
-    )
+    h.options_for_select(UserRepository.for_select(100), segment.user_ids)
   end
 
   private

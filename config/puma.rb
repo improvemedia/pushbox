@@ -19,7 +19,7 @@ tag "pushbox"
 #
 environment ENV.fetch("RAILS_ENV") { "production" }
 
-stdout_redirect '/srv/pushbox.inmyroom.ru/shared/log/puma.out.log', '/srv/pushbox.inmyroom.ru/shared/log/puma.err.log', true
+# stdout_redirect '/srv/pushbox.inmyroom.ru/shared/log/puma.out.log', '/srv/pushbox.inmyroom.ru/shared/log/puma.err.log', true
 # Specifies the number of `workers` to boot in clustered mode.
 # Workers are forked webserver processes. If using threads and workers together
 # the concurrency of the application would be max `threads` * `workers`.

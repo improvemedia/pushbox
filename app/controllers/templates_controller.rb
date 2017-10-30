@@ -5,6 +5,10 @@ class TemplatesController < ApplicationController
     @presenter = presenter
   end
 
+  def preview
+    @presenter = presenter
+  end
+
   def new
     @presenter = presenter
   end
@@ -26,7 +30,7 @@ class TemplatesController < ApplicationController
   def update
     form = TemplateForm.new(update_params)
     if form.save
-      redirect_to template_path(form.template), notice: t("common.success")
+      redirect_to edit_template_path(form.template), notice: t("common.success")
     else
       render :edit, locals: { presenter: presenter_for(:edit, update_params) }
     end
@@ -62,7 +66,11 @@ class TemplatesController < ApplicationController
   end
 
   def edit_params
-    {}
+    { template: template }
+  end
+
+  def preview_params
+    { template: template }
   end
 
   def form_params

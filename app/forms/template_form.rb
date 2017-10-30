@@ -8,11 +8,12 @@ class TemplateForm < BaseForm
   attribute :title, String
   attribute :body,  String
 
+  delegate :id, :errors, :persisted?, to: :template
+  delegate_attributes :title, :body, to: :template
+
   def persist
     template.update(template_attributes)
   end
-
-  delegate :id, :errors, :persisted?, to: :template
 
   private
 

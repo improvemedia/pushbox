@@ -21,8 +21,10 @@ module Controllers
 
     def action_params(action_name)
       method_name = "#{action_name}_params"
-      return unless respond_to?(method_name)
-      send(method_name)
+
+      if respond_to?(method_name, true)
+        send(method_name)
+      end
     end
 
     class PresenterResolver

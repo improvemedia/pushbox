@@ -1,4 +1,4 @@
-import DOMComponent from 'modules/DOMComponent.js';
+import DOMComponent from 'services/DOMComponent.js';
 
 import FlexibleTextareaWidget from 'main/widgets/FlexibleTextareaWidget.js';
 
