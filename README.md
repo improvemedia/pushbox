@@ -21,4 +21,12 @@ Things you may want to cover:
 
 * Deployment instructions
 
+Mina is used for deployments. Also you will need nodejs >= 8 version. So the steps will be:
+
+```
+$ bundle install
+$ nvm install 8
+$ bundle exec mina production deploy
+```
+
 * ...
