@@ -32,7 +32,7 @@ class LetterDeliveryService < BaseService
 
       letter.assign_attributes(
         subject: template.title,
-        content: MailContentRendererService.call(template: template, user: user)
+        content: template.render(user: user.d.render_data)
       )
 
       yield letter

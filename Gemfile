@@ -24,6 +24,7 @@ gem "virtus"
 
 gem "formtastic"
 gem "slim-rails"
+gem 'liquid'
 
 group :development, :test do
   gem "pry-byebug"
@@ -36,6 +37,8 @@ end
 
 group :production do
   gem "unicorn"
+  gem 'mailgun_rails'
+  gem 'whenever'
 end
 
 group :development do
