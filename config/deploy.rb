@@ -7,6 +7,7 @@ require "mina/git"
 require "mina/chruby"
 require "mina/unicorn"
 require "mina/puma"
+require 'mina/whenever'
 # require "mina/rbenv"  # for rbenv support. (https://rbenv.org)
 # require "mina/rvm"    # for rvm support. (https://rvm.io)
 
@@ -102,6 +103,7 @@ task deploy: :environment do
 
     on :launch do
       invoke :puma_restart
+      invoke :'whenever:update'
     end
   end
   # you can use `run :local` to run tasks on local machine before of after the deploy scripts

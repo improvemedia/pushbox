@@ -139,6 +139,8 @@ GEM
       puma (>= 2.13)
     mina-unicorn (1.1.0)
       mina (~> 1.0)
+    mina-whenever (1.0.1)
+      mina (~> 1.0)
     mini_portile2 (2.2.0)
     minitest (5.10.3)
     netrc (0.11.0)
@@ -318,6 +320,7 @@ DEPENDENCIES
   mina-multistage
   mina-puma
   mina-unicorn
+  mina-whenever
   overcommit
   pg
   pry-byebug

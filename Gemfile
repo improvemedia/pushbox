@@ -58,4 +58,5 @@ group :deploy do
   gem "mina-multistage",   require: false
   gem "mina-puma",         require: false
   gem "mina-unicorn",      require: false
+  gem 'mina-whenever',     require: false
 end
