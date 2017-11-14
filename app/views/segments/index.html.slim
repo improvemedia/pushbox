@@ -4,12 +4,14 @@ table.b-table
   thead
     tr
       th Название
+      th Число получателей
       th Действие
 
   tbody
     - @presenter.segment_entities.each do |segment_entity|
       tr$$c-RailsItem
         td= segment_entity.title
+        td= segment_entity.users_count
         td._actions
           a.b-btn.b-btn__skin_success.b-btn__size_s(href=segment_entity.edit_url) Редактировать
           a.b-btn.b-btn__skin_danger.b-btn__size_s(

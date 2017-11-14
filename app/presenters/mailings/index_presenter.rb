@@ -8,6 +8,8 @@ module Mailings
       attribute :segment_title
       attribute :dispatch_at
       attribute :template_title
+      attribute :sent_count
+      attribute :total_count
       attribute :destroy_url
     end
 

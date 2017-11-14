@@ -4,6 +4,7 @@ module Segments
   class IndexPresenter < ApplicationPresenter
     class SegmentEntity < BaseEntity
       attribute :title
+      attribute :users_count
       attribute :edit_url
       attribute :destroy_url
     end
@@ -11,8 +12,9 @@ module Segments
     def segment_entities
       segments.map do |segment|
         SegmentEntity.new(
-          title: segment.title,
-          edit_url: r.edit_segment_path(segment),
+          title:       segment.title,
+          users_count: segment.users.count,
+          edit_url:    r.edit_segment_path(segment),
           destroy_url: r.segment_path(segment)
         )
       end

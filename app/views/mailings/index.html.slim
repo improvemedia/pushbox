@@ -8,6 +8,7 @@ table.b-table
       th Сегмент
       th Время запуска
       th Шаблон
+      th Отправлено / всего
       th Действие
 
   tbody
@@ -18,6 +19,7 @@ table.b-table
         td= mailing_entity.segment_title
         td= mailing_entity.dispatch_at
         td= mailing_entity.template_title
+        td= "#{mailing_entity.sent_count} / #{mailing_entity.total_count}"
         td._actions
           / a.b-btn.b-btn__skin_success.b-btn__size_s(href=segment_entity.edit_url) Редактировать
           a.b-btn.b-btn__skin_danger.b-btn__size_s(
