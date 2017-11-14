@@ -20,7 +20,6 @@ class MailingsController < ApplicationController
   end
 
   def destroy
-    binding.pry
     mailing = Mailing.actual.find(params[:id])
     mailing.mark_as_deleted
 
