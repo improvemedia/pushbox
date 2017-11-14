@@ -14,6 +14,7 @@ gem "puma", "~> 3.7"
 gem "activerecord-postgis-adapter"
 gem "pg"
 gem "sidekiq"
+gem "sidekiq-statistic"
 
 gem "dotenv-rails"
 gem "enumerize"
@@ -23,8 +24,8 @@ gem "state_machines-activerecord"
 gem "virtus"
 
 gem "formtastic"
+gem "liquid"
 gem "slim-rails"
-gem 'liquid'
 
 group :development, :test do
   gem "pry-byebug"
@@ -36,9 +37,9 @@ group :development, :test do
 end
 
 group :production do
+  gem "mailgun_rails"
   gem "unicorn"
-  gem 'mailgun_rails'
-  gem 'whenever'
+  gem "whenever"
 end
 
 group :development do
@@ -58,5 +59,5 @@ group :deploy do
   gem "mina-multistage",   require: false
   gem "mina-puma",         require: false
   gem "mina-unicorn",      require: false
-  gem 'mina-whenever',     require: false
+  gem "mina-whenever",     require: false
 end
