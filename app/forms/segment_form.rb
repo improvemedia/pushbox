@@ -22,6 +22,7 @@ class SegmentForm < BaseForm
   private
 
   def segment_attributes
+    binding.pry
     attributes.slice(:title, :user_ids)
   end
 end

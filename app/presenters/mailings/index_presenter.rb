@@ -21,6 +21,8 @@ module Mailings
           segment_title:  mailing.segment&.title || "Все пользователи",
           dispatch_at:    mailing.dispatch_at,
           template_title: mailing.template.title,
+          sent_count:     mailing.sent_letters.count,
+          total_count:    UserRepository.for_segment(mailing.segment).count,
           destroy_url:    r.mailing_path(mailing.id)
         )
       end
@@ -29,7 +31,7 @@ module Mailings
     private
 
     def mailings
-      Mailing.includes(:segment, :template)
+      Mailing.actual.includes(:segment, :template)
     end
 
     def active_page_side_nav_item

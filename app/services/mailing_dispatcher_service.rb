@@ -15,7 +15,7 @@ class MailingDispatcherService < BaseService
   private
 
   def mailing
-    MailingRepository.find(letter_id)
+    MailingRepository.find(mailing_id)
   end
   memoize :mailing
 

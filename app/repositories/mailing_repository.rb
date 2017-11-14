@@ -8,7 +8,7 @@ class MailingRepository < BaseRepository
   def for_send
     self.class.new(
       scope
-        .with_state(:pending)
+        .with_dispatch_state(:pending)
         .where("dispatch_at <= ?", Time.current)
     )
   end
@@ -16,6 +16,6 @@ class MailingRepository < BaseRepository
   private
 
   def default_scope
-    model_class.all
+    model_class.actual
   end
 end
