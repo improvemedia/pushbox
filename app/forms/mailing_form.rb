@@ -29,8 +29,7 @@ class MailingForm < BaseForm
 
   def mailing_attributes
     attributes
-      .slice(:title, :segment_id, :dispatch_at)
-      .merge(pushbox_template_id: template_id)
+      .slice(:title, :segment_id, :dispatch_at, :template_id)
       .compact
   end
 end
