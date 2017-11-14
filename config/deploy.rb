@@ -86,6 +86,37 @@ task :puma_restart do
   invoke :"puma:start"
 end
 
+task sidekiq_start: :environment do
+  sidekiq = "#{fetch(:bundle_bin)} exec sidekiq"
+  release_path = fetch(:release_path)
+
+  if release_path.to_s.empty?
+    path = "#{fetch(:deploy_to)}/current"
+  else
+    path = release_path
+  end
+
+  command %(cd #{path} && #{sidekiq} -c 5 -e production -d -q default -v -L /srv/pushbox.inmyroom.ru/shared/log/sidekiq.log -P /srv/pushbox.inmyroom.ru/shared/tmp/pids/sidekiq.pid)
+end
+
+task sidekiq_stop: :environment do
+  sidekiqctl = "#{fetch(:bundle_bin)} exec sidekiqctl"
+  release_path = fetch(:release_path)
+
+  if release_path.to_s.empty?
+    path = "#{fetch(:deploy_to)}/current"
+  else
+    path = release_path
+  end
+
+  command %(cd #{path} && #{sidekiqctl} stop /srv/pushbox.inmyroom.ru/shared/tmp/pids/sidekiq.pid 10)
+end
+
+task :sidekiq_restart do
+  invoke :"sidekiq_stop"
+  invoke :"sidekiq_start"
+end
+
 desc "Deploys the current version to the server."
 task deploy: :environment do
   # uncomment this line to make sure you pushed your local branch to the remote origin
@@ -104,6 +135,7 @@ task deploy: :environment do
     on :launch do
       invoke :puma_restart
       invoke :'whenever:update'
+      invoke :sidekiq_restart
     end
   end
   # you can use `run :local` to run tasks on local machine before of after the deploy scripts
