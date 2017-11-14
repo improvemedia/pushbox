@@ -10,6 +10,21 @@ table.b-table
       th Шаблон
       th Действие
 
+  tbody
+    - @presenter.mailing_entities.each do |mailing_entity|
+      tr$$c-RailsItem
+        td= mailing_entity.id
+        td= mailing_entity.title
+        td= mailing_entity.segment_title
+        td= mailing_entity.dispatch_at
+        td= mailing_entity.template_title
+        td._actions
+          / a.b-btn.b-btn__skin_success.b-btn__size_s(href=segment_entity.edit_url) Редактировать
+          a.b-btn.b-btn__skin_danger.b-btn__size_s(
+            href=mailing_entity.destroy_url
+            data-el='c-RailsItem/destroy'
+          ) Удалить
+
 .b-bottom-panel
   a.b-btn.b-btn__skin_success.b-btn__size_m(href=new_mailing_path) Создать рассылку
 
