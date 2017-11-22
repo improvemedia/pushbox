@@ -26,6 +26,7 @@ gem "virtus"
 gem "formtastic"
 gem "liquid"
 gem "slim-rails"
+gem 'bugsnag'
 
 group :development, :test do
   gem "pry-byebug"

@@ -50,6 +50,7 @@ GEM
       ice_nine (~> 0.11.0)
       thread_safe (~> 0.3, >= 0.3.1)
     bindex (0.5.0)
+    bugsnag (6.1.0)
     builder (3.2.3)
     byebug (9.1.0)
     capybara (2.14.4)
@@ -307,6 +308,7 @@ PLATFORMS
 
 DEPENDENCIES
   activerecord-postgis-adapter
+  bugsnag
   capybara (~> 2.13)
   dotenv-rails
   enumerize
